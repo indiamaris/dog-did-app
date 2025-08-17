@@ -3,5 +3,5 @@ export const Pack = () => {
     <div>
       <h1>Pack</h1>
     </div>
-  )
-}
+  );
+};

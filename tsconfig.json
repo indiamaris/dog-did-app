@@ -10,13 +10,10 @@
   "compileOnSave": false,
   "watch": false,
   "extends": "./tsconfig.base.json",
-  "references": [
-    { "path": "./tsconfig.vitest.json" },
-
-  ],
+  "references": [{ "path": "./tsconfig.vitest.json" }],
   "compilerOptions": {
-  "jsx": "react-jsx",
-  "composite": true,
+    "jsx": "react-jsx",
+    "composite": true,
     "types": ["node"],
     "baseUrl": "../",
     "paths": {

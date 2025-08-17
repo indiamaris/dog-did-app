@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router"
+import { Link } from '@tanstack/react-router';
 
 export const Navbar = () => {
   return (
@@ -12,5 +12,5 @@ export const Navbar = () => {
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};

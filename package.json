@@ -7,8 +7,22 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "fix": "eslint . --fix",
+    "check-types": "tsc --noEmit",
+    "check-types:watch": "tsc --noEmit --watch",
+    "start": "vite",
+    "start:dev": "vite --host",
+    "start:prod": "vite --host --mode production",
+    "start:prod:preview": "vite preview --host",
+    "start:prod:preview:port": "vite preview --host --port 3000",
+    "start:prod:preview:port:host": "vite preview --host --port 3000 --host",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:watch": "vitest --coverage --watch"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
