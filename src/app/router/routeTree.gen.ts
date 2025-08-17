@@ -10,6 +10,8 @@ import { Route as SignIn } from '@routes/sigin/SignIn';
 
 import { Route as ShowUI } from '@routes/show-ui/ShowUI';
 
+import { Route as Packs } from '@routes/packs/Packs'; 
+
 const rootRouteImport = createRootRoute();
 
 const PathlessLayoutRoute = PathlessLayoutRouteImport.update({
@@ -35,13 +37,21 @@ const ShowUIRoute = ShowUI.update({
   getParentRoute: () => rootRouteImport,
 } as any);
 
+const PacksRoute = Packs.update({
+  id: '/packs',
+  path: '/packs',
+  getParentRoute: () => rootRouteImport,
+} as any);
+
 export interface FileRoutesByFullPath {
   '/home/Home': typeof HomeRoute;
   '/show-ui/ShowUI': typeof ShowUIRoute;
+  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
 }
 export interface FileRoutesByTo {
   '/home/Home': typeof HomeRoute;
   '/show-ui/ShowUI': typeof ShowUIRoute;
+  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -49,6 +59,7 @@ export interface FileRoutesById {
   '/home': typeof HomeRoute;
   '/show-ui': typeof ShowUIRoute;
   '/sign-in': typeof SignInRoute;
+  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
 }
 
 export interface FileRoutesByFullPath {
@@ -58,6 +69,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/sign-in': typeof SignInRoute;
   '/show-ui/ShowUI': typeof ShowUIRoute;
+  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
+  '/home': typeof HomeRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -65,14 +78,15 @@ export interface FileRoutesById {
   '/home': typeof HomeRoute;
   '/sign-in': typeof SignInRoute;
   '/show-ui': typeof ShowUIRoute;
+  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/home' | '/show-ui/ShowUI';
+  fullPaths: '/packs/Packs' | '/home' | '/show-ui/ShowUI';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/home' | '/show-ui/ShowUI';
-  id: '__root__' | '/_pathlessLayout' | '/home' | '/show-ui';
+  to: '/packs/Packs' | '/home' | '/show-ui/ShowUI';
+  id: '/packs/Packs' | '__root__' | '/_pathlessLayout' | '/home' | '/show-ui';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -80,6 +94,7 @@ export interface RootRouteChildren {
   HomeRoute: typeof HomeRoute;
   SignInRoute: typeof SignInRoute;
   ShowUIRoute: typeof ShowUIRoute;
+  PacksRoute: typeof PacksRoute; // Adicione esta linha
 }
 
 declare module '@tanstack/react-router' {
@@ -112,6 +127,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShowUI;
       parentRoute: typeof rootRouteImport;
     };
+    '/packs/Packs': {
+      id: '/packs/Packs';
+      path: '/packs/Packs';
+      fullPath: '/packs/Packs';
+      preLoaderRoute: typeof Packs;
+      parentRoute: typeof rootRouteImport;
+    };
   }
 }
 
@@ -120,6 +142,7 @@ const rootRouteChildren: RootRouteChildren = {
   HomeRoute: HomeRoute,
   SignInRoute: SignInRoute,
   ShowUIRoute: ShowUIRoute,
+  PacksRoute: PacksRoute, // Adicione esta linha
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

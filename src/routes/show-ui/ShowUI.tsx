@@ -3,6 +3,8 @@ import AddButton from "../../components/buttons/AddButton";
 import { Box, Typography } from "@mui/material";
 import DeleteButton from "../../components/buttons/DeleteButton";
 import TextInput from "../../components/text-input/TextInput";
+import CustomButton from "../../components/buttons/button";
+import RoundedButton from "../../components/buttons/RoudedButton";
 
 
 
@@ -61,6 +63,10 @@ const ShowUI = () => {
             width="100%"
             
           /></Box>
+
+                   <Box width={500} marginBottom={2}>
+                             <Box width={500} marginBottom={2}><RoundedButton /></Box>
+                   </Box>
 
 
 </Box>
