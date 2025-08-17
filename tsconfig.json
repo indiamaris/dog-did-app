@@ -15,7 +15,7 @@
 
   ],
   "compilerOptions": {
-
+  "jsx": "react-jsx",
   "composite": true,
     "types": ["node"],
     "baseUrl": "../",
@@ -34,8 +34,7 @@
       "@assets": ["./src/assets"],
       "@context": ["./src/context"]
     },
-    "jsx": "react-jsx",
-    "jsxImportSource": "@tanstack/react-router",
+    // "jsxImportSource": "@tanstack/react-router",
     "moduleResolution": "bundler",
     "module": "esnext",
     "target": "esnext",
