@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     // ...outras opções...
     "composite": true
   }
