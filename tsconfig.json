@@ -1,7 +1,42 @@
 {
+  "include": ["src"],
+    "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts",vite.congig.ts"],
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    { "path": "./tsconfig.node.json" },
+  ],
+  "compilerOptions": {
+    "types": ["node"],
+    "baseUrl": "../",
+    "paths": {
+      "@": ["./"],
+      "@app": ["./src/app"],
+      "@router": ["./src/app/router"],
+      "@view": ["./src/view"],
+      "@routerRoutes": ["./src/app/router/routes"],
+      "@pages": ["./src/view/pages"],
+      "@components": ["./src/view/components"],
+      "services": ["./src/services"],
+      "src": ["./src"],
+      "@theme": ["./src/theme"],
+      "lib": ["./src/lib"],
+      "@assets": ["./src/assets"],
+      "@context": ["./src/context"]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "@tanstack/react-router",
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.cache/tsconfig.tsbuildinfo"
+  }
 }
