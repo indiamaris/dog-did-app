@@ -15,6 +15,7 @@ import { Route as SignInIndexRouteImport } from './routes/sign-in/index'
 import { Route as ShowUiIndexRouteImport } from './routes/show-ui/index'
 import { Route as SettingsIndexRouteImport } from './routes/settings/index'
 import { Route as PacksIndexRouteImport } from './routes/packs/index'
+import { Route as SignInFormRouteImport } from './routes/sign-in/form'
 import { Route as PacksAddPackAddPackRouteImport } from './routes/packs/addPack/AddPack'
 
 const PathlessLayoutRoute = PathlessLayoutRouteImport.update({
@@ -46,6 +47,11 @@ const PacksIndexRoute = PacksIndexRouteImport.update({
   path: '/packs/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SignInFormRoute = SignInFormRouteImport.update({
+  id: '/sign-in/form',
+  path: '/sign-in/form',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PacksAddPackAddPackRoute = PacksAddPackAddPackRouteImport.update({
   id: '/packs/addPack/AddPack',
   path: '/packs/addPack/AddPack',
@@ -54,6 +60,7 @@ const PacksAddPackAddPackRoute = PacksAddPackAddPackRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/sign-in/form': typeof SignInFormRoute
   '/packs': typeof PacksIndexRoute
   '/settings': typeof SettingsIndexRoute
   '/show-ui': typeof ShowUiIndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/sign-in/form': typeof SignInFormRoute
   '/packs': typeof PacksIndexRoute
   '/settings': typeof SettingsIndexRoute
   '/show-ui': typeof ShowUiIndexRoute
@@ -72,6 +80,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_pathlessLayout': typeof PathlessLayoutRoute
+  '/sign-in/form': typeof SignInFormRoute
   '/packs/': typeof PacksIndexRoute
   '/settings/': typeof SettingsIndexRoute
   '/show-ui/': typeof ShowUiIndexRoute
@@ -82,6 +91,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/sign-in/form'
     | '/packs'
     | '/settings'
     | '/show-ui'
@@ -90,6 +100,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/sign-in/form'
     | '/packs'
     | '/settings'
     | '/show-ui'
@@ -99,6 +110,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_pathlessLayout'
+    | '/sign-in/form'
     | '/packs/'
     | '/settings/'
     | '/show-ui/'
@@ -109,6 +121,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PathlessLayoutRoute: typeof PathlessLayoutRoute
+  SignInFormRoute: typeof SignInFormRoute
   PacksIndexRoute: typeof PacksIndexRoute
   SettingsIndexRoute: typeof SettingsIndexRoute
   ShowUiIndexRoute: typeof ShowUiIndexRoute
@@ -160,6 +173,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PacksIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sign-in/form': {
+      id: '/sign-in/form'
+      path: '/sign-in/form'
+      fullPath: '/sign-in/form'
+      preLoaderRoute: typeof SignInFormRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/packs/addPack/AddPack': {
       id: '/packs/addPack/AddPack'
       path: '/packs/addPack/AddPack'
@@ -173,6 +193,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PathlessLayoutRoute: PathlessLayoutRoute,
+  SignInFormRoute: SignInFormRoute,
   PacksIndexRoute: PacksIndexRoute,
   SettingsIndexRoute: SettingsIndexRoute,
   ShowUiIndexRoute: ShowUiIndexRoute,

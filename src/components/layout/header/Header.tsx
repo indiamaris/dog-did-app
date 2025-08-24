@@ -1,12 +1,7 @@
-import { useParams } from '@tanstack/react-router';
 
-export default function Header() {
-  const params = useParams();
 
+export default function Header({title}) {
   return (
-    <header>
-      <h1>My App</h1>
-      <div>Parâmetro da rota: {JSON.stringify(params)}</div>
-    </header>
+      <h1>{title}</h1>
   );
 }

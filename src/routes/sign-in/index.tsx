@@ -1,10 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router';
+import PageShell from '../../components/layout/pageShell/PageShell';
+import ButtonCustom from '../../components/inputs/buttons/ButtonCustom';
 
 const SignIn = () => {
   return (
-    <div>
-      <h1>Sign In here</h1>
-    </div>
+      <PageShell title={"Sign In"} footerItens={[<ButtonCustom variant='add' onclick={console.log('added')} />]}>
+        <h1>Sign In form here</h1>
+      </PageShell>
+
   );
 };
 
