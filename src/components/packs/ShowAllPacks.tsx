@@ -1,4 +1,4 @@
-const AllPacks = ({packs}) => {
+const ShowAllPacks = ({packs}) => {
   return (
     <div>
      {packs.map((pack) => (
@@ -12,4 +12,4 @@ const AllPacks = ({packs}) => {
   );
 }
 
-export default AllPacks;
+export default ShowAllPacks;

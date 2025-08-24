@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-import  ShowPacks  from './components/ShowPacks';
 import { AddPack } from './addPack/AddPack';
+import ShowAllPacks from '../../components/packs/ShowAllPacks';
 
 const mockPacks =[
   { id: 1, name: 'Pack 1', Onwers: ['Onwers for Pack 1'], pets:[{  
@@ -31,7 +31,7 @@ const Packs = () => {
   return (
     <div>
       <h1>Packs</h1>
-  <ShowPacks packs={mockPacks} />
+  <ShowAllPacks packs={mockPacks} />
       <AddPack />
    
 
@@ -41,6 +41,6 @@ const Packs = () => {
 
 export default Packs;
 
-export const Route = createFileRoute('/packs/showPacks/ShowPacks')({
+export const Route = createFileRoute('/packs/Packs')({
   component: Packs,
 });
