@@ -5,10 +5,10 @@ export const Navbar = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/">Homese</Link>
+          <Link to="/">Homes</Link>
         </li>
         <li>
-          <Link to="/about">Aboutes</Link>
+          <Link to="/packs">Packs</Link>
         </li>
       </ul>
     </nav>

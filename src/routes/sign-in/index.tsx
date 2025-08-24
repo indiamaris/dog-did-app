@@ -10,6 +10,6 @@ const SignIn = () => {
 
 export default SignIn;
 
-export const Route = createFileRoute('/sigin/SignIn')({
+export const Route = createFileRoute('/sign-in/')({
   component: SignIn,
 });
