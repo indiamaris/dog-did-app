@@ -1,6 +1,6 @@
 
 import { Link } from "@tanstack/react-router";
-import React = require("react");
+
 type IconProps = {
   icon: React.ReactNode;
   to?: string;
@@ -28,7 +28,7 @@ const Icon: React.FC<IconProps> = ({
       aria-label={ariaLabel}
       style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}
     >
-      {icon}
+    {  <img src={icon} alt={`icon ${ariaLabel}`} />}
     </button>
   );
 
