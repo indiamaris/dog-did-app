@@ -23,13 +23,13 @@ export const Route = createRootRouteWithContext<{
 function RootComponent() {
   return (
     <>
-      <div className="p-2 flex gap-2 text-lg">
+     
         <Navbar />
-      </div>
-      <hr />
+
+
       <Outlet />
-      <ReactQueryDevtools buttonPosition="top-right" />
-      <TanStackRouterDevtools position="bottom-right" />
+      <ReactQueryDevtools buttonPosition="bottom-right" />
+      <TanStackRouterDevtools position="bottom-left" />
     </>
   );
 }

@@ -12,9 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PathlessLayoutRouteImport } from './routes/_pathlessLayout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SignInIndexRouteImport } from './routes/sign-in/index'
+import { Route as ShowUiIndexRouteImport } from './routes/show-ui/index'
 import { Route as SettingsIndexRouteImport } from './routes/settings/index'
 import { Route as PacksIndexRouteImport } from './routes/packs/index'
-import { Route as ShowUiShowUIRouteImport } from './routes/show-ui/ShowUI'
 import { Route as PacksAddPackAddPackRouteImport } from './routes/packs/addPack/AddPack'
 
 const PathlessLayoutRoute = PathlessLayoutRouteImport.update({
@@ -31,6 +31,11 @@ const SignInIndexRoute = SignInIndexRouteImport.update({
   path: '/sign-in/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShowUiIndexRoute = ShowUiIndexRouteImport.update({
+  id: '/show-ui/',
+  path: '/show-ui/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsIndexRoute = SettingsIndexRouteImport.update({
   id: '/settings/',
   path: '/settings/',
@@ -41,11 +46,6 @@ const PacksIndexRoute = PacksIndexRouteImport.update({
   path: '/packs/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ShowUiShowUIRoute = ShowUiShowUIRouteImport.update({
-  id: '/show-ui/ShowUI',
-  path: '/show-ui/ShowUI',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PacksAddPackAddPackRoute = PacksAddPackAddPackRouteImport.update({
   id: '/packs/addPack/AddPack',
   path: '/packs/addPack/AddPack',
@@ -54,17 +54,17 @@ const PacksAddPackAddPackRoute = PacksAddPackAddPackRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/show-ui/ShowUI': typeof ShowUiShowUIRoute
   '/packs': typeof PacksIndexRoute
   '/settings': typeof SettingsIndexRoute
+  '/show-ui': typeof ShowUiIndexRoute
   '/sign-in': typeof SignInIndexRoute
   '/packs/addPack/AddPack': typeof PacksAddPackAddPackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/show-ui/ShowUI': typeof ShowUiShowUIRoute
   '/packs': typeof PacksIndexRoute
   '/settings': typeof SettingsIndexRoute
+  '/show-ui': typeof ShowUiIndexRoute
   '/sign-in': typeof SignInIndexRoute
   '/packs/addPack/AddPack': typeof PacksAddPackAddPackRoute
 }
@@ -72,9 +72,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_pathlessLayout': typeof PathlessLayoutRoute
-  '/show-ui/ShowUI': typeof ShowUiShowUIRoute
   '/packs/': typeof PacksIndexRoute
   '/settings/': typeof SettingsIndexRoute
+  '/show-ui/': typeof ShowUiIndexRoute
   '/sign-in/': typeof SignInIndexRoute
   '/packs/addPack/AddPack': typeof PacksAddPackAddPackRoute
 }
@@ -82,26 +82,26 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/show-ui/ShowUI'
     | '/packs'
     | '/settings'
+    | '/show-ui'
     | '/sign-in'
     | '/packs/addPack/AddPack'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/show-ui/ShowUI'
     | '/packs'
     | '/settings'
+    | '/show-ui'
     | '/sign-in'
     | '/packs/addPack/AddPack'
   id:
     | '__root__'
     | '/'
     | '/_pathlessLayout'
-    | '/show-ui/ShowUI'
     | '/packs/'
     | '/settings/'
+    | '/show-ui/'
     | '/sign-in/'
     | '/packs/addPack/AddPack'
   fileRoutesById: FileRoutesById
@@ -109,9 +109,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PathlessLayoutRoute: typeof PathlessLayoutRoute
-  ShowUiShowUIRoute: typeof ShowUiShowUIRoute
   PacksIndexRoute: typeof PacksIndexRoute
   SettingsIndexRoute: typeof SettingsIndexRoute
+  ShowUiIndexRoute: typeof ShowUiIndexRoute
   SignInIndexRoute: typeof SignInIndexRoute
   PacksAddPackAddPackRoute: typeof PacksAddPackAddPackRoute
 }
@@ -139,6 +139,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignInIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/show-ui/': {
+      id: '/show-ui/'
+      path: '/show-ui'
+      fullPath: '/show-ui'
+      preLoaderRoute: typeof ShowUiIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings/': {
       id: '/settings/'
       path: '/settings'
@@ -151,13 +158,6 @@ declare module '@tanstack/react-router' {
       path: '/packs'
       fullPath: '/packs'
       preLoaderRoute: typeof PacksIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/show-ui/ShowUI': {
-      id: '/show-ui/ShowUI'
-      path: '/show-ui/ShowUI'
-      fullPath: '/show-ui/ShowUI'
-      preLoaderRoute: typeof ShowUiShowUIRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/packs/addPack/AddPack': {
@@ -173,9 +173,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PathlessLayoutRoute: PathlessLayoutRoute,
-  ShowUiShowUIRoute: ShowUiShowUIRoute,
   PacksIndexRoute: PacksIndexRoute,
   SettingsIndexRoute: SettingsIndexRoute,
+  ShowUiIndexRoute: ShowUiIndexRoute,
   SignInIndexRoute: SignInIndexRoute,
   PacksAddPackAddPackRoute: PacksAddPackAddPackRoute,
 }

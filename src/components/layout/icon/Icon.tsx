@@ -15,10 +15,11 @@ const Icon: React.FC<IconProps> = ({
   onClick,
   className,
   ariaLabel,
+  variant
 }) =>
   to ? (
     <Link to={to} className={className} aria-label={ariaLabel}>
-      {  <img src={icon} alt={`icon ${ariaLabel}`} />}
+      {  <img src={icon} alt={`icon ${ariaLabel}`} height={variant === 'md' ? 34 : 16} />}
     </Link>
   ) : (
     <button
