@@ -11,10 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PathlessLayoutRouteImport } from './routes/_pathlessLayout'
 import { Route as SiginRouteRouteImport } from './routes/sigin/route'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as PacksIndexRouteImport } from './routes/packs/index'
 import { Route as SiginSignInRouteImport } from './routes/sigin/SignIn'
 import { Route as ShowUiShowUIRouteImport } from './routes/show-ui/ShowUI'
-import { Route as HomeHomeRouteImport } from './routes/home/Home'
 import { Route as PacksAddPackAddPackRouteImport } from './routes/packs/addPack/AddPack'
 
 const PathlessLayoutRoute = PathlessLayoutRouteImport.update({
@@ -24,6 +24,11 @@ const PathlessLayoutRoute = PathlessLayoutRouteImport.update({
 const SiginRouteRoute = SiginRouteRouteImport.update({
   id: '/sigin',
   path: '/sigin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PacksIndexRoute = PacksIndexRouteImport.update({
@@ -41,11 +46,6 @@ const ShowUiShowUIRoute = ShowUiShowUIRouteImport.update({
   path: '/show-ui/ShowUI',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HomeHomeRoute = HomeHomeRouteImport.update({
-  id: '/home/Home',
-  path: '/home/Home',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PacksAddPackAddPackRoute = PacksAddPackAddPackRouteImport.update({
   id: '/packs/addPack/AddPack',
   path: '/packs/addPack/AddPack',
@@ -53,16 +53,16 @@ const PacksAddPackAddPackRoute = PacksAddPackAddPackRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/sigin': typeof SiginRouteRouteWithChildren
-  '/home/Home': typeof HomeHomeRoute
   '/show-ui/ShowUI': typeof ShowUiShowUIRoute
   '/sigin/SignIn': typeof SiginSignInRoute
   '/packs': typeof PacksIndexRoute
   '/packs/addPack/AddPack': typeof PacksAddPackAddPackRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/sigin': typeof SiginRouteRouteWithChildren
-  '/home/Home': typeof HomeHomeRoute
   '/show-ui/ShowUI': typeof ShowUiShowUIRoute
   '/sigin/SignIn': typeof SiginSignInRoute
   '/packs': typeof PacksIndexRoute
@@ -70,9 +70,9 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/sigin': typeof SiginRouteRouteWithChildren
   '/_pathlessLayout': typeof PathlessLayoutRoute
-  '/home/Home': typeof HomeHomeRoute
   '/show-ui/ShowUI': typeof ShowUiShowUIRoute
   '/sigin/SignIn': typeof SiginSignInRoute
   '/packs/': typeof PacksIndexRoute
@@ -81,25 +81,25 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | '/sigin'
-    | '/home/Home'
     | '/show-ui/ShowUI'
     | '/sigin/SignIn'
     | '/packs'
     | '/packs/addPack/AddPack'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
     | '/sigin'
-    | '/home/Home'
     | '/show-ui/ShowUI'
     | '/sigin/SignIn'
     | '/packs'
     | '/packs/addPack/AddPack'
   id:
     | '__root__'
+    | '/'
     | '/sigin'
     | '/_pathlessLayout'
-    | '/home/Home'
     | '/show-ui/ShowUI'
     | '/sigin/SignIn'
     | '/packs/'
@@ -107,9 +107,9 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   SiginRouteRoute: typeof SiginRouteRouteWithChildren
   PathlessLayoutRoute: typeof PathlessLayoutRoute
-  HomeHomeRoute: typeof HomeHomeRoute
   ShowUiShowUIRoute: typeof ShowUiShowUIRoute
   PacksIndexRoute: typeof PacksIndexRoute
   PacksAddPackAddPackRoute: typeof PacksAddPackAddPackRoute
@@ -131,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiginRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/packs/': {
       id: '/packs/'
       path: '/packs'
@@ -150,13 +157,6 @@ declare module '@tanstack/react-router' {
       path: '/show-ui/ShowUI'
       fullPath: '/show-ui/ShowUI'
       preLoaderRoute: typeof ShowUiShowUIRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home/Home': {
-      id: '/home/Home'
-      path: '/home/Home'
-      fullPath: '/home/Home'
-      preLoaderRoute: typeof HomeHomeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/packs/addPack/AddPack': {
@@ -182,9 +182,9 @@ const SiginRouteRouteWithChildren = SiginRouteRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   SiginRouteRoute: SiginRouteRouteWithChildren,
   PathlessLayoutRoute: PathlessLayoutRoute,
-  HomeHomeRoute: HomeHomeRoute,
   ShowUiShowUIRoute: ShowUiShowUIRoute,
   PacksIndexRoute: PacksIndexRoute,
   PacksAddPackAddPackRoute: PacksAddPackAddPackRoute,

@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { AddPack } from './addPack/AddPack';
+//todo verificar pq esse importa esta bugadinho
 import ShowAllPacks from '../../components/packs/ShowAllPacks';
 
 const mockPacks =[

@@ -12,7 +12,7 @@ const Home = () => {
 export default Home;
 
 
-export const Route = createFileRoute('/home/Home')({
+export const Route = createFileRoute('/')({
   component: Home,
 });
 
