@@ -41,6 +41,6 @@ const Packs = () => {
 
 export default Packs;
 
-export const Route = createFileRoute('/packs/Packs')({
+export const Route = createFileRoute('/packs/')({
   component: Packs,
 });
