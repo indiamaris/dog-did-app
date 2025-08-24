@@ -1,11 +1,12 @@
-import { Link } from "@tanstack/react-router";
 
+import { Link } from "@tanstack/react-router";
+import React = require("react");
 type IconProps = {
   icon: React.ReactNode;
   to?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
-  "aria-label"?: string;
+  ariaLabel?: string;
 };
 
 const Icon: React.FC<IconProps> = ({
@@ -13,11 +14,11 @@ const Icon: React.FC<IconProps> = ({
   to,
   onClick,
   className,
-  "aria-label": ariaLabel,
+  ariaLabel,
 }) =>
   to ? (
     <Link to={to} className={className} aria-label={ariaLabel}>
-      {icon}
+      {  <img src={icon} alt={`icon ${ariaLabel}`} />}
     </Link>
   ) : (
     <button

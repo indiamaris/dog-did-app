@@ -1,6 +1,9 @@
-import { Link } from '@tanstack/react-router';
+import React from 'react';
+
 import Icon from '../../icon/Icon';
-import { settings, home } from './icons';
+import  settings from './icons/settings.svg';
+import home  from './icons/home.svg';
+
 
 export const Navbar = () => {
   return (
