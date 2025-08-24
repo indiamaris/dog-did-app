@@ -4,13 +4,13 @@ import { createRootRoute } from '@tanstack/react-router';
 
 import { Route as PathlessLayoutRouteImport } from '@routes/_pathlessLayout';
 
-import { Route as Home } from '@routes/home/Home';
+import { Route as Home } from '@routes/home/route';
 
-import { Route as SignIn } from '@routes/sigin/SignIn';
+import { Route as SignIn } from '@routes/sigin/route';
 
 import { Route as ShowUI } from '@routes/show-ui/ShowUI';
 
-import { Route as Packs } from '@routes/packs/Packs'; 
+import { Route as Packs } from '@routes/packs/showPacks/route'; 
 
 const rootRouteImport = createRootRoute();
 
@@ -46,12 +46,12 @@ const PacksRoute = Packs.update({
 export interface FileRoutesByFullPath {
   '/home/Home': typeof HomeRoute;
   '/show-ui/ShowUI': typeof ShowUIRoute;
-  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
+  '/packs/showPacks': typeof PacksRoute; // Adicione esta linha
 }
 export interface FileRoutesByTo {
   '/home/Home': typeof HomeRoute;
   '/show-ui/ShowUI': typeof ShowUIRoute;
-  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
+  '/packs/showPacks': typeof PacksRoute; // Adicione esta linha
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -59,7 +59,7 @@ export interface FileRoutesById {
   '/home': typeof HomeRoute;
   '/show-ui': typeof ShowUIRoute;
   '/sign-in': typeof SignInRoute;
-  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
+  '/packs/showPacks': typeof PacksRoute; // Adicione esta linha
 }
 
 export interface FileRoutesByFullPath {
@@ -69,7 +69,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/sign-in': typeof SignInRoute;
   '/show-ui/ShowUI': typeof ShowUIRoute;
-  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
+  '/packs/showPacks': typeof PacksRoute; // Adicione esta linha
   '/home': typeof HomeRoute;
 }
 export interface FileRoutesById {
@@ -78,15 +78,15 @@ export interface FileRoutesById {
   '/home': typeof HomeRoute;
   '/sign-in': typeof SignInRoute;
   '/show-ui': typeof ShowUIRoute;
-  '/packs/Packs': typeof PacksRoute; // Adicione esta linha
+  '/packs/showPacks': typeof PacksRoute; // Adicione esta linha
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/packs/Packs' | '/home' | '/show-ui/ShowUI';
+  fullPaths: '/packs/showPacks' | '/home' | '/show-ui/ShowUI';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/packs/Packs' | '/home' | '/show-ui/ShowUI';
-  id: '/packs/Packs' | '__root__' | '/_pathlessLayout' | '/home' | '/show-ui';
+  to: '/packs/showPacks' | '/home' | '/show-ui/ShowUI';
+  id: '/packs/showPacks' | '__root__' | '/_pathlessLayout' | '/home' | '/show-ui';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -127,11 +127,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShowUI;
       parentRoute: typeof rootRouteImport;
     };
-    '/packs/Packs': {
-      id: '/packs/Packs';
-      path: '/packs/Packs';
-      fullPath: '/packs/Packs';
-      preLoaderRoute: typeof Packs;
+    '/packs/showPacks': {
+      id: '/packs/showPacks';
+      path: '/packs/showPacks';
+      fullPath: '/packs/showPacks';
+      preLoaderRoute: typeof ShowPacks;
       parentRoute: typeof rootRouteImport;
     };
   }
